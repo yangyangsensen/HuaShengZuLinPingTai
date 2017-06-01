@@ -1,0 +1,84 @@
+<script>
+function onSubPub(){
+	if(pubformto.shopname.value==''){
+		alert('营业点名称不允许空');
+		pubformto.shopname.focus();
+		return false;
+	}
+	if(pubformto.shopintr.value==''){
+		alert('营业点简介不允许空');
+		pubformto.shopintr.focus();
+		return false;
+	}
+	if(pubformto.shoptype.value==0){
+		alert('请选择营业类别');
+		pubformto.shoptype.focus();
+		return false;
+	}
+
+	return true;
+}
+
+function idphotoChange(thisa,imgId){
+	
+    if (typeof FileReader === 'undefined') {  
+        alert('你的浏览器不支持FileReader接口！');  
+        return;  
+    }
+    var file = thisa.files[0];
+    if(!/image\/\w+/.test(file.type)){  
+        alert("看清楚,这个需要图片！"); 
+        return false;
+    }
+    var reader = new FileReader();  
+    //将文件以Data URL形式读入页面  
+    reader.readAsDataURL(file);
+    reader.onload=function(e){  
+        //显示文件  
+        var img = document.getElementById(imgId);
+        img.src = this.result;
+    }
+}
+</script>
+
+<div class="modal fade" id="myModalUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <form name='pubformto' method='post' action='/home/shopupdate' onsubmit='return onSubPub();' enctype="multipart/form-data">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">请输入想要修改的信息</h4>
+            </div>
+            <div class="modal-body">
+                <form action='/users/zhuce' method="post">
+                   	<div class="form-group" id='myform'>
+						    <input type="text" class="form-control" name="shopname" value="<%- shopRs[0].shopname%>">
+
+						    <textarea class="form-control" rows="5"  name='shopintr' value="<%- shopRs[0].shopintr%>"> <%- shopRs[0].shopintr%></textarea>
+						    <input type="text" class="form-control" name='keywords' value="<%- shopRs[0].keywords%>">
+						    <select class="form-control" name='shoptype'>
+						      <option value='<%-shopRs[0].shoptype%>'>此处默认为为您已选择的类型，如果没改动不需要选择</option>
+						      <% shoptypeRs.forEach(function(row){ %>
+						      <option value='<%-row.id%>'>
+						      <%-row.typename%>
+						      </option>
+						      <%})%>
+						    </select>
+						    <label for="lastname" class="col-sm-2 control-label">商品图片</label>
+						    <input type="file" id="inputfile" name='photourl' onChange='idphotoChange(this,"idphotoView")'>
+						    <div style="height: 50px;"><img id='idphotoView' style="width: 190px;height:auto;"/></div>
+						    <input type='hidden' name='lng' value="<%- shopRs[0].lng%>">
+						    <input type='hidden' name='lat' value="<%- shopRs[0].lat%>">
+					  </div>
+					</div>
+					<div class="modal-footer" style='text-align:center'>
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+						<input type="submit" class="btn btn-primary" onclick='dian();' value='提交'>
+						</input>
+			 </div>
+            </div>
+             
+          </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->

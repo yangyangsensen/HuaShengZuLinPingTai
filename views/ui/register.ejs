@@ -1,0 +1,51 @@
+
+<div class="modal fade" id="myModalR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">注册</h4>
+            </div>
+            <div class="modal-body">
+                <form action='/users/zhuce' method="post">
+                    <table height='240' >
+
+                        <tr>
+                            <td align='right'>email:</td>
+                            <td>
+                                <input type='text' name='email'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align='right'>昵称:</td>
+                            <td>
+                                <input type='text' name='nicheng'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align='right'>密码:</td>
+                            <td>
+                                <input type='password' name='pwd'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align='right'>重复密码:</td>
+                            <td>
+                                <input type='password' name='repwd'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align='center' colSpan='2'>
+                                <input type="submit" class="btn btn-primary" value='注册'/>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                
+               
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

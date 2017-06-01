@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>演示：jQuery实现加入购物车飞入动画效果</title>
+<meta name="keywords" content="jquery,购物车" />
+<meta name="description" content="Helloweba文章结合实例演示HTML5、CSS3、jquery、PHP等WEB技术应用。" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+
+
+<script type="text/javascript" src="../../public/javascripts/jquery-2.1.4.min.js"></script>
+<script src="../../public/javascripts/jquery.fly.min.js"></script>
+<!--[if lte IE 9]>
+<script src="requestAnimationFrame.js"></script>
+<![endif]-->
+<script>
+$(function() {
+	var offset = $("#end").offset();
+	$(".addcar").click(function(event){
+		var addcar = $(this);
+		var img = addcar.parent().find('img').attr('src');
+		var flyer = $('<img  src="'+img+'">');
+		flyer.fly({
+			start: {
+				left: event.pageX,
+				top: event.pageY
+			},
+			end: {
+				left: offset.left+10,
+				top: offset.top+10,
+				width: 0,
+				height: 0
+			},
+			onEnd: function(){
+				$("#msg").show().animate({width: '250px'}, 200).fadeOut(1000);
+				addcar.css("cursor","default").removeClass('orange').unbind('click');
+				this.destory();
+			}
+		});
+	});
+  
+});
+</script>
+</head>
+
+<body>
+
+			<i id="end"></i>
+			
+
+		<div >
+			<img src="../../public/images/goods/upload_156bf938c45fc092480fee84abf5b7a7.jpg" width="180" height="180">
+			<h4>¥<span>3499.00</span></h4>
+			<p>LG 49LF5400-CA 49寸IPS硬屏富贵招财铜钱设计</p>
+			<a href="#" class="button orange addcar">加入购物车</a>
+
+	
+
+
+
+
+</div>
+
+
+
+</body>
+</html>
