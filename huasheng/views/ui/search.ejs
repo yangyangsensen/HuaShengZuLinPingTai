@@ -1,0 +1,37 @@
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/stylesheetss/normalize.css" />
+<link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/demo.css">
+<link rel="stylesheet" href="/stylesheets/stylesearch.css">
+<script>
+function onSubSearch(){
+    if(searchForm.seachTarget.value==1){
+        searchForm.action='/search/goods';
+    }else{
+        searchForm.action='/search/shop';
+    }
+    return true;
+}
+</script>
+<div class=" d4" style="float: left;width:300px;">
+	<form class="searchform" id="searchForm" name="searchForm" style="width: 300px;margin: 0 auto;" action="" method="get" onsubmit="return onSubSearch()">
+    	<div style="position: absolute;float: right;height: 100%;">
+			 <select  style="height: 100%;width: 80px; border: 0px;" name="seachTarget">
+		      <option value="1">商品</option>
+		      <option value="2">店铺</option>
+		    </select>
+		</div>
+	  <input type="text" placeholder="搜索从这开始..." style="background-color: #FFFFFF;margin-left: 80px;" name='keywords'>
+
+	  <button type="submit"></button>
+	
+	</form>
+	</div>
+
+    

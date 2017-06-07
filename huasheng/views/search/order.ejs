@@ -1,0 +1,56 @@
+<% include ../ui/homehead %>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+   <script src="/javascripts/jquery-2.1.4.min.js"></script>
+   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <style>
+   		.headStyle{
+   			 height: 2.5em;
+   			 margin-top:6px;
+   		}
+   </style>
+   <script>
+   	   function aa(a){
+   	   	  alert(a)
+   	   }
+   </script>
+  </head>
+  <body>
+<div style='text-align: center'>
+订单&nbsp;<a href='#' onclick="aa('<%-shoppingid%>')">确认支付</a>
+</div>
+<div class="row">
+	      <div class="col-sm-1"></div>
+	      <div class="col-sm-10">
+	      <% sumPrice=0 %>
+	      <% for(key in rs){%>
+	      	<table class="table table-bordered" align='center'>
+	      	  <caption><%-rs[key].shopname%></caption>
+			  <tbody>
+			  <% rs[key].forEach(function(item){%>
+			  	   <tr>
+				      <td><%-item.goodsname%></td>
+				      <td><%-item.price%></td>
+				      <td><%-item.num%></td>
+				  </tr>
+			  <%
+			  		sumPrice += item.price*item.num;
+			  	})
+			  %>
+			  <tr>
+			  	<td colspan='3' align='center'>
+			  		总价:<%-sumPrice%>
+			  	</td>
+			  </tr>
+			  </tbody>
+			</table>
+		   <%}%>
+		   <a href='/search/buys?shoppingid=<%-shoppingid%>'>确认支付</a>
+	      </div>
+	      <div class="col-sm-1"></div>
+</div>
+
+</body>
+</html>

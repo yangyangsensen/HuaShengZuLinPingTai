@@ -1,0 +1,61 @@
+<% include ../ui/homehead %>
+<script>
+   	function oderlist(){
+   		var cn = goodsForm.chooseOne;
+   		var len = cn.length;
+   		var orderStr = '';
+   		for(i=1;i<len;i++){
+   			if(cn[i].checked){
+   				orderStr += ','+cn[i].value;
+   			}
+   		}
+   		location.href='createorder?orderStr='+orderStr;
+   	}
+ </script>
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+	<table class="table table-bordered" align='center'>
+		  <tbody>
+		  <tr>
+		      <td>商品图</td>
+		      <td>
+		      	商品名称
+		      </td>
+		      <td>
+		      	商品单价
+		      </td>
+		      <td>商品数量</td>
+		      <td>
+		      	确定购买<br/>
+		      	全选<input type='checkbox' name='chooseAll'/>
+		      </td>
+		    </tr>
+		    <form name='goodsForm' id='goodsForm'>
+		    <input type='hidden' name='chooseOne'>
+		  <% shopList.forEach(function(row){ %>
+		    <tr>
+		      <td><img src='../<%-row.goodsimg%>' width="300px"/></td>
+		      <td>
+		      	<%-row.goodsname%>
+		      </td>
+		      <td>
+		      	<%-row.price%>
+		      </td>
+		      <td>
+		      	<%-row.num%>
+		      </td>
+		      <td>
+		      	<input type='checkbox' name='chooseOne' value='<%-row.shopid%>_<%-row.goodsid%>'/>
+		      </td>
+		    </tr>
+		  <% }) %>
+		  	</form>
+		  <tr>
+		  	<td colspan='5' align='center'>
+		  		<button type="button" class="btn btn-success" onclick='oderlist()'>确认购买</button>
+		  	</td>
+		  </tr>
+		  </tbody>
+	</table>
+ </div>
+ <div class="col-sm-1"></div>
