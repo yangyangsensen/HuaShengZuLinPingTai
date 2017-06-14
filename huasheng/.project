@@ -14,13 +14,6 @@
 	<natures>
 		<nature>com.aptana.projects.webnature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>views/ui/HelloWorld3301</name>
-			<type>2</type>
-			<locationURI>PARENT-5-PROJECT_LOC/Desktop/%E8%B5%84%E6%96%99/pomelo/HelloWorld3301</locationURI>
-		</link>
-	</linkedResources>
 	<filteredResources>
 		<filter>
 			<id>1494897163970</id>
